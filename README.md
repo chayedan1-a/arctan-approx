@@ -17,13 +17,13 @@ Given:
 ### Algorithm 1
 **Accuracy bound**: $\le 0.4^\circ$
 $$
-\theta = \left| \, 0^{\frac{|x|+x}{2}} \cdot 90^\circ - \big(45r - r \cdot (r-1) \cdot (14.02 + 3.79r)\big) \, \right|
+\theta = \Big[ 0^{\frac{|x|+x}{2}} \cdot 90^\circ - \big(45r - r(r-1) \cdot (14.02 + 3.79r)\big) \Big]
 $$
 
 ### Algorithm 2
 **Accuracy bound**: $\le 0.072^\circ$
 $$
-\theta = \left| \, 0^{\frac{|x|+x}{2}} \cdot 90^\circ - \big(45r - r \cdot (r-1) \cdot (13.982 + 3.828r + 0.084r^2)\big) \, \right|
+\theta = \Big[ 0^{\frac{|x|+x}{2}} \cdot 90^\circ - \big(45r - r(r-1) \cdot (13.982 + 3.828r + 0.084r^2)\big) \Big]
 $$
 
 ### Important Notes on Behavior
