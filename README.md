@@ -15,10 +15,7 @@ Given:
 
 ## Core Formula
 $$
-\theta = \left|
-0^{\frac{|x|+x}{2}} \cdot 90
-- \bigl(45r - r(r-1)(14.02 + 3.79r)\bigr)
-\right|
+\theta = \left| 0^{\frac{|x|+x}{2}} \cdot 90 \cdot \bigl(45r - r(r-1)(14.02 + 3.79r)\bigr) \right|
 $$
 
 ### Important Notes on Behavior
