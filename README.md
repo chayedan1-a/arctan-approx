@@ -1,3 +1,4 @@
+
 # arctan-approx
 Arctan Approximation Algorithm
 
@@ -11,11 +12,22 @@ Given:
 - $x = a - b$
 - $r = \dfrac{\min(a,b)}{\max(a,b)}$
 
-> **Note**: The algorithm is defined for $a, b \neq 0$.
+> **Note**: The algorithm is defined for $(a, b) \neq (0, 0)$, which means $a$ and $b$ cannot both be zero.
 
 ## Core Formula
+### Algorithm 1
+**Accuracy bound**: $\le 0.4^\circ$
 $$
-\theta = \left| 0^{\frac{|x|+x}{2}} \cdot 90 \cdot \bigl(45r - r(r-1)(14.02 + 3.79r)\bigr) \right|
+\theta = \left|
+0^{\frac{|x|+x}{2}} \cdot 90
+- \bigl(45r - r(r-1)(14.02 + 3.79r)\bigr)
+\right|
+$$
+
+### Algorithm 2
+**Accuracy bound**: $\le 0.072^\circ$
+$$
+\theta = \left|\; \left( 0^{\frac{|x| + x}{2}} \times 90^\circ \right) - \Big( 45r - r(r-1)(13.982 + 3.828r + 0.084r^2) \Big) \;\right|
 $$
 
 ### Important Notes on Behavior
@@ -29,7 +41,7 @@ $$
      - If $a < b$: use $\left| 90 - \bigl(45r - r(r-1)(14.02+3.79r)\bigr) \right|$
 
 ## Usage
-1. Ensure $a, b \neq 0$.
+1. Ensure $(a, b) \neq (0, 0)$.
 2. Compute $r = \dfrac{\min(a,b)}{\max(a,b)}$.
 3. Substitute into the formula above (or use the conditional form if needed).
 4. The result is the approximated angle $\theta$ in degrees.
