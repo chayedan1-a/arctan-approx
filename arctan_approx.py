@@ -3,8 +3,8 @@
 Approximate Arctangent Angle Calculation Algorithm
 Author: chayedan1-a
 Accuracy:
-    Algorithm 1: Error ≤ 0.4°
-    Algorithm 2: Error ≤ 0.072°
+    Algorithm 1: Error ≤ 0.4±0.1°
+    Algorithm 2: Error ≤ 0.072±0.018°
 Description:
     Implement two polynomial approximation formulas for angle calculation,
     used for scenarios without native arctan function.
