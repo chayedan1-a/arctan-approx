@@ -16,15 +16,11 @@ Given:
 ## Core Formula
 ### Algorithm 1
 **Accuracy bound**: $\le 0.4^\circ$
-$$
-\theta = \left| 0^{\frac{|x|+x}{2}} \cdot 90 - \bigl(45r - r(r-1)(14.02 + 3.79r)\bigr) \right|
-$$
+$$\theta = \left| 0^{\frac{|x|+x}{2}} \cdot 90 - \bigl(45r - r(r-1)(14.02 + 3.79r)\bigr) \right|$$
 
 ### Algorithm 2
 **Accuracy bound**: $\le 0.072^\circ$
-$$
-\theta = \left| \left( 0^{\frac{|x| + x}{2}} \times 90^\circ \right) - \Big( 45r - r(r-1)(13.982 + 3.828r + 0.084r^2) \Big) \right|
-$$
+$$\theta = \left| \left( 0^{\frac{|x|+x}{2}} \times 90^\circ \right) - \Big( 45r - r(r-1)(13.982 + 3.828r + 0.084r^2) \Big) \right|$$
 
 ### Important Notes on Behavior
 1. The formula as written is equivalent to $\arctan(b/a)$.  
@@ -44,6 +40,5 @@ $$
 
 ## License
 Apache License 2.0
-
 
 
