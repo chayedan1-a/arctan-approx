@@ -6,8 +6,8 @@ A low-computation-cost fast approximation of the arctangent function (output in 
 
 ## Definition
 Given:
-- $a$: opposite side (focus)
-- $b$: adjacent side
+- $a$ = $|opposite side (focus)|$
+- $b$ = $|adjacent side|$
 - $x = a - b$
 - $r = \dfrac{\min(a,b)}{\max(a,b)}$
 
