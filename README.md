@@ -285,8 +285,8 @@ When 'BBA''-' is used with a=y, b=x:
 It outputs the mathematical angle.
 That is, under this condition, 'BBA''-' is equivalent to atan2(y, x).
 Invariantly, BBA- is always equal to atan2(a, b).
----
 
+---
 VI. Performance Specifications
 
 Accuracy: ≤ 0.09°, converges to exact values at extreme ratios
@@ -422,3 +422,4 @@ r = min(|a|, |b|) / ( max(|a|, |b|) + 0^(|a|+|b|) )
 
 ## License
 Apache License 2.0
+---
