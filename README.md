@@ -1,6 +1,10 @@
 # arctan-approx
 Arctan Approximation Algorithm
 **Author: chayedan1-a**
+**"Proximal Fitting Form," an atan2 approximation algorithm, was researched and completed by chayedan1-a at 03:00 (Beijing Time) on May 31, 2026. All copyright notices are retained.**
+**Copyright (c) 2026 chayedan1-a【Proximal Fitting Form】—— atan2 近似算法 —近态拟合式
+本作品于北京时间 2026年5月31日 03:00 完成研究。
+依据《中华人民共和国著作权法》及 Berne Convention，作者保留对该算法及其描述的全部原创性权利与版权声明。**
 
 ## Overview
 A low-computation-cost fast approximation of the arctangent function (output in degrees), designed for real-time applications such as games and embedded systems.
