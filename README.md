@@ -7,8 +7,8 @@ A low-computation-cost fast approximation of the arctangent function (output in 
 
 ## Definition
 Given:
-- $a$ = $|opposite side (focus)|$
-- $b$ = $|adjacent side|$
+- $a$ = $|opposite side (focus)|$=$|X-axis|$
+- $b$ = $|adjacent side|$=$|Y-axis|$
 - $x = a - b$
 - $r = \dfrac{\min(a,b)}{\max(a,b)}$
 
@@ -45,8 +45,8 @@ $$\theta = \left| \left( 0^{\frac{|x|+x}{2}} \cdot 90^\circ \right) - \Bigl[45r 
 
 ### I. Definition
 
-- $a$ = $opposite side$
-- $b$ = $adjacent side$
+- $a$ = $opposite side$=$X-axis$
+- $b$ = $adjacent side$=$Y-axis$
 - $x = |a| - |b|$ — first-order angle discriminator
 - $r = \dfrac{\min(|a|,|b|)}{\max(|a|,|b|)}$ — input ratio
 
@@ -136,7 +136,7 @@ $0^{0^{|a|+|b|}} \cdot C$
 
 $0^{\frac{|x| + x}{2}}$
 
-(The symbol inside $+$ can be switched to $-$ to change logic: $-$ corresponds to atan2(a, b), $+$ corresponds to atan2(b, a).)
+(The symbol inside $+$ can be switched to $-$ to change logic: $-$ corresponds to atan2(b(Y-axis),a(X-axis)), $+$ corresponds to atan2(a(X-axis), b(Y-axis)).)
 
 ---
 
