@@ -115,10 +115,10 @@ $0^{|a|+|b|}$
 ### IV. Configuration for Output Coordinate Systems
 
 - **Mathematical Coordinates ($0 \sim 360^\circ$):**
-  First-Order Discriminator: $-$, Interpreter: None required
-
+  First-Order Discriminator: $-$,
+  
 - **Compass Angle ($0 \sim 360^\circ$):**
-  First-Order Discriminator: $-$, Second-Order Interpreter: Required
+  First-Order Discriminator: $-$,
 
 - **Folded Angle ($\pm 180^\circ$):**
   Third-Order Interpreter: Required
@@ -137,7 +137,7 @@ $r = \dfrac{\min(|a|,|b|)}{\max(|a|,|b|) + 0^{|a|+|b|}}$
 
 $0^{0^{|a|+|b|}} \cdot C$
 
-- **Discriminator vs. Mapper Mode Switching**:
+#### - **Discriminator vs. Mapper Mode Switching**:
 Mapper:360 * ( **A** * 0.5 + (1 - **A**) * **B** )
 Discriminator:0^[(|x| **+** x) / 2]
 (The symbol inside '**+**','**AAB**' can be switched to '**-**','**BBA**' to change logic)
@@ -180,7 +180,7 @@ Invariantly, BBA- is always equal to atan2(a, b).
 
 Proximal Fitting Form
 
-I. Definition
+### I. Definition
 
 a = opposite side =x-axis
 b = adjacent side =y-axis
@@ -189,7 +189,7 @@ r = min(|a|, |b|) / max(|a|, |b|) -- input ratio
 
 ---
 
-II. Core Formulas
+### II. Core Formulas
 
 First-Order Processor
 v = | 0^[(|x| + x) / 2] * 90 - [ 45r - r(r-1)(13.982 + 4.02r) ] |
@@ -214,7 +214,7 @@ C = [ 360 * ( A * 0.5 + (1 - A) * B ) ] + [ (p + 0^|p|) * q * v ]
 
 ---
 
-III. Interpreters (Coordinate System Conversion) & Modules
+### III. Interpreters (Coordinate System Conversion) & Modules
 
 Third-Order Interpreter (Optional):
 C - 0^(|C-180| - (C-180)) * 360
@@ -222,6 +222,7 @@ Description: Folds the angle to ±180 degrees.
 
 Second-Order Interpreter (Compass Angle, Optional):
 90 - C + 360
+Note: Variable C must output the mathematical angle for this to work.
 
 Second-Order Mapper
 
@@ -235,20 +236,20 @@ Zero-Order Protector (Optional):
 
 ---
 
-IV. Configuration for Output Coordinate Systems
+### IV. Configuration for Output Coordinate Systems
 
 Mathematical Coordinates (0 ~ 360):
-First-Order Discriminator: +, Interpreter: None required
+First-Order Discriminator: +, 
 
 Compass Angle (0 ~ 360):
-First-Order Discriminator: -, Second-Order Interpreter: Required
+First-Order Discriminator: -, 
 
 Folded Angle (±180):
 Third-Order Interpreter: Required
 
 ---
 
-V. Protector & Discriminator Usage
+### V. Protector & Discriminator Usage
 
 When a = b = 0, direct calculation returns 180.
 
@@ -258,7 +259,7 @@ r = min(|a|, |b|) / ( max(|a|, |b|) + 0^(|a|+|b|) )
 To return 0 instead of 180 for (0, 0):
 0^(0^(|a|+|b|)) * C
 
-- **Discriminator vs. Mapper Mode Switching**:
+#### - **Discriminator vs. Mapper Mode Switching**:
 Mapper:360 * ( **A** * 0.5 + (1 - **A**) * **B** )
 Discriminator:0^[(|x| **+** x) / 2]
 (The symbol inside '**+**','**AAB**' can be switched to '**-**','**BBA**' to change logic)
@@ -287,7 +288,7 @@ That is, under this condition, 'BBA''-' is equivalent to atan2(y, x).
 Invariantly, BBA- is always equal to atan2(a, b).
 
 ---
-VI. Performance Specifications
+### VI. Performance Specifications
 
 Accuracy: ≤ 0.09°, converges to exact values at extreme ratios
 Speed: Very fast (based on special power operations)
@@ -299,7 +300,7 @@ Limitation: Depends on 0^0 = 1 (only weakness; natively compatible with Python, 
 ## Chinese 中文
 
 **近态拟合式**
-一、定义
+### 一、定义
 
 a = 对边 = x轴
 b = 邻边 = y轴
@@ -308,7 +309,7 @@ r = min(|a|, |b|) / max(|a|, |b|) -- 输入比例
 
 ---
 
-二、核心公式
+### 二、核心公式
 
 一阶处理器
 v = | 0^[(|x| + x) / 2] * 90 - [ 45r - r(r-1)(13.982 + 4.02r) ] |
@@ -334,7 +335,7 @@ C = [ 360 * ( A * 0.5 + (1 - A) * B ) ] + [ (p + 0^|p|) * q * v ]
 
 ---
 
-三、解释器（坐标系转换）与模块
+### 三、解释器（坐标系转换）与模块
 
 三阶解释器（可选）：
 C - 0^(|C-180| - (C-180)) * 360
@@ -355,7 +356,7 @@ C - 0^(|C-180| - (C-180)) * 360
 
 ---
 
-四、输出坐标系配置
+### 四、输出坐标系配置
 
 数学坐标（0 ~ 360）：
 一阶判断器：+，无需解释器
@@ -367,8 +368,7 @@ C - 0^(|C-180| - (C-180)) * 360
 三阶解释器必装
 
 ---
-
-五、保护器与判断器用法
+### 五、保护器与判断器用法
 
 当 a = b = 0 时，直接计算返回 180。
 
@@ -379,8 +379,7 @@ r = min(|a|, |b|) / ( max(|a|, |b|) + 0^(|a|+|b|) )
 0^(0^(|a|+|b|)) * C
 
 ---
-
-判断器与映射器模式切换：
+#### 判断器与映射器模式切换：
 
 映射器：360 * ( A * 0.5 + (1 - A) * B )
 判断器：0^[(|x| + x) / 2]
@@ -411,7 +410,7 @@ r = min(|a|, |b|) / ( max(|a|, |b|) + 0^(|a|+|b|) )
 
 ---
 
-六、性能指标
+### 六、性能指标
 
 精度：≤ 0.09°，极端比值下收敛接近至精确值
 速度：极快（基于特殊幂运算）
@@ -420,6 +419,7 @@ r = min(|a|, |b|) / ( max(|a|, |b|) + 0^(|a|+|b|) )
 稳定性：经测试无问题
 限制：依赖 0^0 = 1（唯一弱点；Python、Lua 原生兼容）
 
+
+
 ## License
 Apache License 2.0
----
