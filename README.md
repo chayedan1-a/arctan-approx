@@ -20,7 +20,7 @@ Accuracy bound: $\le 0.09^\circ$
 $$\theta = \left| 0^{\frac{|x|+x}{2}} \cdot 90 - \Bigl[45r - r \cdot (r-1) \cdot (14.02 + 3.79r)\Bigr] \right|$$
 
 ### Algorithm 2
-Accuracy bound: $\le 0.08\circ$
+Accuracy bound: $\le 0.08^\circ$
 $$\theta = \left| \left( 0^{\frac{|x|+x}{2}} \cdot 90^\circ \right) - \Bigl[45r - r \cdot (r-1) \cdot (13.982 + 3.828r + 0.084r^2)\Bigr] \right|$$
 
 ### Important Notes on Behavior
@@ -45,92 +45,112 @@ $$\theta = \left| \left( 0^{\frac{|x|+x}{2}} \cdot 90^\circ \right) - \Bigl[45r 
 
 ### I. Definition
 
-- **a** = opposite side
-- **b** = adjacent side
-- **x** = |a| - |b| — first-order angle discriminator
-- **r** = min(|a|, |b|) / max(|a|, |b|) — input ratio
+Given:
+- $a$ = $|opposite side|$
+- $b$ = $|adjacent side|$
+- $x = |a| - |b|$ — first-order angle discriminator
+- $r = \dfrac{\min(|a|,|b|)}{\max(|a|,|b|)}$ — input ratio
+
+> **Note**: The algorithm is defined for $(a, b) \neq (0, 0)$, which means $a$ and $b$ cannot both be zero.
 
 ---
 
 ### II. Core Formulas
 
 **First-Order Processor**
-v = | 0^[(|x| + x) / 2] * 90 - [ 45r - r(r-1)(13.982 + 4.02r) ] |
-- **Function:** Polynomial angle approximation, output range 0 ~ 90 degrees.
+
+$$v = \left| 0^{\frac{|x| + x}{2}} \cdot 90 - \Bigl[45r - r \cdot (r-1) \cdot (13.982 + 4.02r)\Bigr] \right|$$
+
+- **Function:** Polynomial angle approximation, output range $0 \sim 90^\circ$.
 
 **Second-Order Full-Quadrant Definition (Sign Conversion)**
-p = 0^(|b|-b) - 0^(|b|+b)
-q = 0^(|a|-a) - 0^(|a|+a)
-- **Purpose:** Convert the signs of a and b to -1, 0, or 1.
+
+$$p = 0^{|b|-b} - 0^{|b|+b}$$
+$$q = 0^{|a|-a} - 0^{|a|+a}$$
+
+- **Purpose:** Convert the signs of $a$ and $b$ to $-1$, $0$, or $1$.
 
 **In-place Correction**
-p = p + 0^|p| * q
-q = q + 0^|q| * p
-*(The following p and q are the corrected values.)*
 
-**Convert to 0 or 1**
-A = 0^(q + |q|)
-B = 0^(p + |p|)
+$$p = p + 0^{|p|} \cdot q$$
+$$q = q + 0^{|q|} \cdot p$$
+
+*(The following $p$ and $q$ are the corrected values.)*
+
+**Convert to $0$ or $1$**
+
+$$A = 0^{q + |q|}$$
+$$B = 0^{p + |p|}$$
 
 **Second-Order Full-Quadrant Mapper**
-C = [ 360 * ( B * 0.5 + (1 - B) * A ) ] + [ (p + 0^|p|) * q * v ]
+
+$$C = \Bigl[360 \cdot \bigl(B \cdot 0.5 + (1 - B) \cdot A\bigr)\Bigr] + \Bigl[(p + 0^{|p|}) \cdot q \cdot v\Bigr]$$
 
 ---
 
 ### III. Interpreters (Coordinate System Conversion) & Modules
 
 **Third-Order Interpreter (Optional):**
-C - 0^(|C-180| - (C-180)) * 360
-- **Description:** Folds the angle to ±180 degrees.
+
+$$C - 0^{|C-180| - (C-180)} \cdot 360$$
+
+- **Description:** Folds the angle to $\pm 180^\circ$.
 
 **Second-Order Interpreter (Compass Angle, Optional):**
-90 - C + 360
+
+$$90 - C + 360$$
 
 **First-Order Discriminator:**
-0^[(|x| + x) / 2]
+
+$$0^{\frac{|x| + x}{2}}$$
 
 **Zero-Order Protector (Optional):**
-0^(|a|+|b|)
+
+$$0^{|a|+|b|}$$
 
 ---
 
 ### IV. Configuration for Output Coordinate Systems
 
-- **Mathematical Coordinates (0 ~ 360):**
-  First-Order Discriminator: +, Interpreter: None required
+- **Mathematical Coordinates ($0 \sim 360^\circ$):**
+  First-Order Discriminator: $+$, Interpreter: None required
 
-- **Compass Angle (0 ~ 360):**
-  First-Order Discriminator: -, Second-Order Interpreter: Required
+- **Compass Angle ($0 \sim 360^\circ$):**
+  First-Order Discriminator: $-$, Second-Order Interpreter: Required
 
-- **Folded Angle (±180):**
+- **Folded Angle ($\pm 180^\circ$):**
   Third-Order Interpreter: Required
 
 ---
 
 ### V. Protector & Discriminator Usage
 
-- When a = b = 0, direct calculation returns 180.
+- When $a = b = 0$, direct calculation returns $180$.
 
-- **Modified r (to prevent division by zero):**
-  r = min(|a|, |b|) / ( max(|a|, |b|) + 0^(|a|+|b|) )
+- **Modified $r$ (to prevent division by zero):**
 
-- **To return 0 instead of 180 for (0, 0):**
-  0^(0^(|a|+|b|)) * C
+$$r = \dfrac{\min(|a|,|b|)}{\max(|a|,|b|) + 0^{|a|+|b|}}$$
+
+- **To return $0$ instead of $180$ for $(0, 0)$:**
+
+$$0^{0^{|a|+|b|}} \cdot C$$
 
 - **Discriminator symbol switching:**
-  0^[(|x| '+' x) / 2]
-  (The symbol inside '+' can be switched to '-' to change logic)
+
+$$0^{\frac{|x| + x}{2}}$$
+
+(The symbol inside $+$ can be switched to $-$ to change logic)
 
 ---
 
 ### VI. Performance Specifications
 
-- **Accuracy:** ≤ 0.09°, converges to exact values at extreme ratios
+- **Accuracy:** $\le 0.09^\circ$, converges to exact values at extreme ratios
 - **Speed:** Very fast (based on special power operations)
 - **Efficiency:** Extremely high (branchless architecture)
 - **Storage:** Byte-level footprint
 - **Stability:** Tested without issues
-- **Limitation:** Depends on 0^0 = 1 (only weakness; natively compatible with Python, Lua)
+- **Limitation:** Depends on $0^0 = 1$ (only weakness; natively compatible with Python, Lua)
 
 ## License
 Apache License 2.0
