@@ -81,7 +81,7 @@ $B = 0^{p + |p|}$
 
 **Second-Order Full-Quadrant Mapper**
 
-$C = \Bigl[360 \cdot \bigl(B \cdot 0.5 + (1 - B) \cdot A\bigr)\Bigr] + \Bigl[(p + 0^{|p|}) \cdot q \cdot v\Bigr]$
+$C = \Bigl[360 \cdot \bigl(A \cdot 0.5 + (1 - A) \cdot B\bigr)\Bigr] + \Bigl[(p + 0^{|p|}) \cdot q \cdot v\Bigr]$
 
 ---
 
@@ -132,11 +132,33 @@ $r = \dfrac{\min(|a|,|b|)}{\max(|a|,|b|) + 0^{|a|+|b|}}$
 
 $0^{0^{|a|+|b|}} \cdot C$
 
-- **Discriminator symbol switching:**
+- **Discriminator vs. Mapper Mode Switching**:
+Mapper:360 * ( **A** * 0.5 + (1 - **A**) * **B** )
+Discriminator:0^[(|x| **+** x) / 2]
+(The symbol inside '**+**','**AAB**' can be switched to '**-**','**BBA**' to change logic)
 
-$0^{\frac{|x| + x}{2}}$
+When Argument order'**AAB**''**+**' is used with $a=x, b=y$:
+It outputs the mathematical angle.
+That is, under this condition, '**AAB**''**+**' is equivalent to $atan2(y, x)$.
+Invariantly, AAB+ is always equal to atan2(b, a).
 
-(The symbol inside $+$ can be switched to $-$ to change logic: $-$ corresponds to $atan2(b(Y-axis),a(X-axis))$, $+$ corresponds to $atan2(a(X-axis), b(Y-axis))$.)
+When '**BBA**''**-**' is used with $a=x, b=y$:
+It outputs the compass angle.
+That is, under this condition, '**BBA**''**-**' is equivalent to $atan2(x, y)$.
+Invariantly, BBA- is always equal to atan2(a, b).
+
+---
+If the axes are swapped (i.e., $a=y-axis$, $b=x-axis$):
+
+When Argument order'**AAB**''**+**' is used with $a=y, b=x$:
+It outputs the compass angle.
+That is, under this condition, '**AAB**''**+**' is equivalent to $atan2(x, y)$.
+Invariantly, AAB+ is always equal to atan2(b, a).
+
+When '**BBA**''**-**' is used with $a=y, b=x$:
+It outputs the mathematical angle.
+That is, under this condition, '**BBA**''**-**' is equivalent to $atan2(y, x)$.
+Invariantly, BBA- is always equal to atan2(a, b).
 
 ---
 
