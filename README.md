@@ -136,7 +136,7 @@ $0^{0^{|a|+|b|}} \cdot C$
 
 $0^{\frac{|x| + x}{2}}$
 
-(The symbol inside $+$ can be switched to $-$ to change logic: $-$ corresponds to atan2(b(Y-axis),a(X-axis)), $+$ corresponds to atan2(a(X-axis), b(Y-axis)).)
+(The symbol inside $+$ can be switched to $-$ to change logic: $-$ corresponds to $atan2(b(Y-axis),a(X-axis))$, $+$ corresponds to $atan2(a(X-axis), b(Y-axis))$.)
 
 ---
 
