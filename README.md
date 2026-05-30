@@ -110,7 +110,7 @@ $0^{|a|+|b|}$
 ### IV. Configuration for Output Coordinate Systems
 
 - **Mathematical Coordinates ($0 \sim 360^\circ$):**
-  First-Order Discriminator: $+$, Interpreter: None required
+  First-Order Discriminator: $-$, Interpreter: None required
 
 - **Compass Angle ($0 \sim 360^\circ$):**
   First-Order Discriminator: $-$, Second-Order Interpreter: Required
@@ -136,7 +136,7 @@ $0^{0^{|a|+|b|}} \cdot C$
 
 $0^{\frac{|x| + x}{2}}$
 
-(The symbol inside $+$ can be switched to $-$ to change logic)
+(The symbol inside $+$ can be switched to $-$ to change logic: $-$ corresponds to atan2(a, b), $+$ corresponds to atan2(b, a).)
 
 ---
 
